@@ -1,9 +1,15 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'NodeJS 20'
+    }
+
     stages {
         stage('Build frontend') {
             steps {
+                sh 'node --version'
+                sh 'npm --version'
                 sh 'npm ci --prefix Frontend-main/Frontend'
                 sh 'npm run build --prefix Frontend-main/Frontend'
             }
