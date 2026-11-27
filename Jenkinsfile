@@ -42,7 +42,7 @@ pipeline {
 
         stage('Build Docker images') {
             steps {
-                sh 'docker compose build'
+                sh 'env -u DOCKER_TLS_VERIFY -u DOCKER_CERT_PATH DOCKER_HOST=tcp://docker:2375 docker compose build'
             }
         }
     }
