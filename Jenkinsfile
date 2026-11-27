@@ -22,6 +22,7 @@ pipeline {
                     cd Backend-main/Backend
                     python3 -m venv .venv
                     .venv/bin/python -m pip install -r requirements.txt
+                    export UPLOAD_DIR="${WORKSPACE}@tmp/backend-uploads"
                     .venv/bin/python -m pytest
                 '''
             }
@@ -33,7 +34,7 @@ pipeline {
                     set -e
                     cd services/catalog-service
                     python3 -m venv .venv
-                    .venv/bin/python -m pip install -r requirements.txt pytest
+                    .venv/bin/python -m pip install -r requirements.txt pytest httpx
                     .venv/bin/python -m pytest
                 '''
             }
